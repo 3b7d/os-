@@ -36,7 +36,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data }) => {
 
   const stats = useMemo<KPIStats>(() => {
     const total = data.length;
-    const successful = data.filter((t) => t.Task_Status.includes('Successful')).length;
+const successful = data.filter((t) => t.Task_Status.includes('Successful') || t.Task_Status.includes('Completed')).length;
     const failed = data.filter((t) => ['Failed', 'Declined', 'Cancelled'].includes(t.Task_Status)).length;
     
     const successRate = total > 0 ? (successful / (successful + failed)) * 100 : 0;
